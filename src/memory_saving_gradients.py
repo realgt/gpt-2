@@ -2,7 +2,7 @@ from toposort import toposort
 import contextlib
 import numpy as np
 import tensorflow as tf
-import tensorflow.contrib.graph_editor as ge
+import tensorflow.compat.v1.contrib.graph_editor as ge
 import time
 import sys
 sys.setrecursionlimit(10000)
