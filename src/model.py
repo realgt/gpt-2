@@ -149,7 +149,7 @@ def model(hparams, X, past=None, scope='model', reuse=tf.compat.v1.AUTO_REUSE):
         results = {}
         batch, sequence = shape_list(X)
 
-        wpe = tf.get_variable('wpe', [hparams.n_ctx, hparams.n_embd],
+        wpe = tf.get_variable('wpe', [hparams['n_ctx'], hparams['n_embd']],
                              initializer=tf.random_normal_initializer(stddev=0.01))
         wte = tf.get_variable('wte', [hparams.n_vocab, hparams.n_embd],
                              initializer=tf.random_normal_initializer(stddev=0.02))
