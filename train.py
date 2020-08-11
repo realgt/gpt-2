@@ -10,7 +10,7 @@ import tensorflow as tf
 import time
 import tqdm
 
-from model import model
+import model
 import encoder
 import sample
 from load_dataset import load_dataset, Sampler
