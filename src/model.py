@@ -124,7 +124,8 @@ def block(x, scope, *, past, hparams):
     with tf.variable_scope(scope):
         print('x is', x)
         print('x sub -1', x.shape[-1])
-        nx = x.shape[-1].value
+        # try getting rid of value.
+        nx = x.shape[-1]
         a, present = attn(norm(x, 'ln_1'), 'attn', nx, past=past, hparams=hparams)
         x = x + a
         m = mlp(norm(x, 'ln_2'), 'mlp', nx*4, hparams=hparams)
