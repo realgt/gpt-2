@@ -11,8 +11,8 @@ import time
 import tqdm
 
 from model import model
-from encoder import *
-from sample import *
+import encoder
+import sample
 from load_dataset import load_dataset, Sampler
 from accumulate import AccumulatingOptimizer
 
