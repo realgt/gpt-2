@@ -107,7 +107,7 @@ def main():
             length=args.sample_length,
             context=context,
             batch_size=args.batch_size,
-            temperature=1.0,
+            temperature=.95,
             top_k=args.top_k,
             top_p=args.top_p)
 
