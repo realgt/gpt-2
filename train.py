@@ -75,15 +75,13 @@ def main():
 
         dict2 = json.load(f)
         for key, value in hparams.items():
-        # do something with value
             hparams[key] = dict2[key]
-    print(type(hparams))
-    print(hparams)
-    print(hparams['n_ctx'])
 
-    if args.sample_length > hparams.n_ctx:
+    ## hparams is a dictionary so treat it like one.
+
+    if args.sample_length > hparams['n_ctx']:
         raise ValueError(
-            "Can't get samples longer than window size: %s" % hparams.n_ctx)
+            "Can't get samples longer than window size: %s" % hparams['n_ctx'])
 
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
