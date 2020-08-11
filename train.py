@@ -6,7 +6,7 @@ import argparse
 import json
 import os
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import time
 import tqdm
 
@@ -83,7 +83,7 @@ def main():
         raise ValueError(
             "Can't get samples longer than window size: %s" % hparams['n_ctx'])
 
-    config = tf.compat.v1.ConfigProto()
+    config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
     with tf.Session(config=config) as sess:
         context = tf.placeholder(tf.int32, [args.batch_size, None])
