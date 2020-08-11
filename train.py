@@ -72,7 +72,11 @@ def main():
     enc = encoder.get_encoder(args.model_name)
     hparams = model.default_hparams()
     with open(os.path.join('models', args.model_name, 'hparams.json')) as f:
-        hparams.override_from_dict(json.load(f))
+
+        dict2 = json.load(f)
+        for key, value in hparams.items():
+        # do something with value
+            hparams[key] = dict2[key]
 
     if args.sample_length > hparams.n_ctx:
         raise ValueError(
