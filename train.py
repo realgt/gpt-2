@@ -10,7 +10,9 @@ import tensorflow as tf
 import time
 import tqdm
 
-import model, sample, encoder
+from sample import sample
+from model import model
+from encoder import encoder
 from load_dataset import load_dataset, Sampler
 from accumulate import AccumulatingOptimizer
 
