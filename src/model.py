@@ -122,6 +122,7 @@ def mlp(x, scope, n_state, *, hparams):
 
 def block(x, scope, *, past, hparams):
     with tf.variable_scope(scope):
+        print('x is', x)
         nx = x.shape[-1].value
         a, present = attn(norm(x, 'ln_1'), 'attn', nx, past=past, hparams=hparams)
         x = x + a
