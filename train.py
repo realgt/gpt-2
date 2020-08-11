@@ -77,7 +77,7 @@ def main():
         for key, value in hparams.items():
         # do something with value
             hparams[key] = dict2[key]
-    print(hparams)
+    print(hparams['n_ctx'])
 
     if args.sample_length > hparams.n_ctx:
         raise ValueError(
