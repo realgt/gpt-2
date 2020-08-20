@@ -4,7 +4,7 @@ import fire
 import json
 import os
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 import model, sample, encoder
 
@@ -45,12 +45,14 @@ def interact_model(
     enc = encoder.get_encoder(model_name)
     hparams = model.default_hparams()
     with open(os.path.join('models', model_name, 'hparams.json')) as f:
-        hparams.override_from_dict(json.load(f))
+        dict2 = json.load(f)
+        for key, value in hparams.items():
+            hparams[key] = dict2[key]
 
     if length is None:
         length = hparams.n_ctx // 2
     elif length > hparams.n_ctx:
-        raise ValueError("Can't get samples longer than window size: %s" % hparams.n_ctx)
+        raise ValueError("Can't get samples longer than window size: %s" % hparams['n_ctx'])
 
     with tf.Session(graph=tf.Graph()) as sess:
         context = tf.placeholder(tf.int32, [batch_size, None])
