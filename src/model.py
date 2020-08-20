@@ -1,15 +1,14 @@
 import numpy as np
 import tensorflow.compat.v1 as tf
-from hparams import HParams
 
 def default_hparams():
-    return HParams(
-        n_vocab=0,
-        n_ctx=1024,
-        n_embd=768,
-        n_head=12,
-        n_layer=12
-    )
+    hparams = {}
+    hparams['n_vocab'] = 0
+    hparams['n_ctx']=1024
+    hparams['n_embd']=768
+    hparams['n_head']=12
+    hparams['n_layer']=12
+    return hparams
 
 def shape_list(x):
     """Deal with dynamic shape in tensorflow cleanly."""
