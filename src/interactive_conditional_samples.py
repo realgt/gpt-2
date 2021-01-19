@@ -50,8 +50,8 @@ def interact_model(
             hparams[key] = dict2[key]
 
     if length is None:
-        length = hparams.n_ctx // 2
-    elif length > hparams.n_ctx:
+        length = hparams['n_ctx']
+    elif length > hparams['n_ctx']:
         raise ValueError("Can't get samples longer than window size: %s" % hparams['n_ctx'])
 
     with tf.Session(graph=tf.Graph()) as sess:
