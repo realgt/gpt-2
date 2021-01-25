@@ -41,8 +41,7 @@ def interact_model(
 
     enc = encoder.get_encoder(model_name)
     hparams = model.default_hparams()
-    #content/gpt-2/models/1558M/encoder.j
-    with open(os.path.join('content','gpt-2','models', model_name, 'hparams.json')) as f:
+    with open(os.path.join('models', model_name, 'hparams.json')) as f:
         dict2 = json.load(f)
         for key, value in hparams.items():
             hparams[key] = dict2[key]
