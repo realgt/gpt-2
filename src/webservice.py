@@ -3,8 +3,9 @@
 import os
 import numpy as np
 import tensorflow.compat.v1 as tf
-
-import model, sample, encoder
+import src.model as model
+import src.sample
+import src.encoder
 
 def interact_model(
     raw_text,
