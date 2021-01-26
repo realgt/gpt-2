@@ -46,7 +46,7 @@ def interact_model(
 
     enc = encoder.get_encoder(model_name)
     hparams = model.default_hparams()
-    with open(os.path.join(models_path, model_name, 'hparams.json')) as f:
+    with open(os.path.abspath(os.path.join(os.sep, model_name, 'hparams.json')) as f:
         dict2 = json.load(f)
         for key, value in hparams.items():
             hparams[key] = dict2[key]
