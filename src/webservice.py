@@ -46,7 +46,7 @@ def interact_model(
     enc = encoder.get_encoder(model_name)
     hparams = model.default_hparams()
     print(os.getcwd())
-    with open(os.path.join('..','models', model_name, 'hparams.json')) as f:
+    with open(os.path.join('/','content','gpt-2','models', model_name, 'hparams.json')) as f:
         dict2 = json.load(f)
         for key, value in hparams.items():
             hparams[key] = dict2[key]
@@ -68,7 +68,7 @@ def interact_model(
         )
 
         saver = tf.train.Saver()
-        ckpt = tf.train.latest_checkpoint(os.path.join('..','models', model_name))
+        ckpt = tf.train.latest_checkpoint(os.path.join('/','content','gpt-2','models', model_name))
         saver.restore(sess, ckpt)
 
        # while True:
