@@ -9,7 +9,7 @@ import src.encoder as encoder
 
 def interact_model(
     raw_text,
-    models_path="../models",
+    models_path="/content/gpt-2/models",
     model_name='1558M',
     seed=None,
     nsamples=1,
