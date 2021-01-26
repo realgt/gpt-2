@@ -9,7 +9,7 @@ import src.encoder as encoder
 
 def interact_model(
     raw_text,
-    models_path="/content/gpt-2/models",
+    models_path="models",
     model_name='1558M',
     seed=None,
     nsamples=1,
@@ -46,7 +46,7 @@ def interact_model(
 
     enc = encoder.get_encoder(model_name)
     hparams = model.default_hparams()
-    with open(os.path.abspath(os.path.join(os.sep, model_name, 'hparams.json')) as f:
+    with open(os.path.abspath(os.path.join(os.sep, models_path, model_name, 'hparams.json')) as f:
         dict2 = json.load(f)
         for key, value in hparams.items():
             hparams[key] = dict2[key]
