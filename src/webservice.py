@@ -50,10 +50,11 @@ def interact_model(
     if 'DATALAB_ROOT' in os.environ:
         if filepath.startswith(os.environ['DATALAB_ROOT']):
             filepath = filepath[len(os.environ['DATALAB_ROOT']):]
-    with open(filepath) as f:
-        dict2 = json.load(f)
-        for key, value in hparams.items():
-            hparams[key] = dict2[key]
+    if (os.path.exists(filepath)):
+        with open(filepath) as f:
+            dict2 = json.load(f)
+            for key, value in hparams.items():
+                hparams[key] = dict2[key]
 
     if length is None:
         length = hparams['n_ctx'] // 2
