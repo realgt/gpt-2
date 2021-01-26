@@ -1,7 +1,10 @@
-import model, sample, encoder
+#!/usr/bin/env python3
+
 import os
 import numpy as np
 import tensorflow as tf
+
+import model, sample, encoder
 
 def interact_model(
     raw_text,
