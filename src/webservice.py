@@ -4,8 +4,8 @@ import os
 import numpy as np
 import tensorflow.compat.v1 as tf
 import src.model as model
-import src.sample
-import src.encoder
+import src.sample as sample
+import src.encoder as encoder
 
 def interact_model(
     raw_text,
