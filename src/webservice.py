@@ -47,15 +47,12 @@ def interact_model(
 
     enc = encoder.get_encoder(model_name)
     hparams = model.default_hparams()
-    filepath = os.path.abspath(models_path + '/' + model_name + '/' + 'hparams.json')
-    if 'DATALAB_ROOT' in os.environ:
-        if filepath.startswith(os.environ['DATALAB_ROOT']):
-            filepath = filepath[len(os.environ['DATALAB_ROOT']):]
-    if (os.path.exists(filepath)):
-        with open(filepath) as f:
-            dict2 = json.load(f)
-            for key, value in hparams.items():
-                hparams[key] = dict2[key]
+    filepath = os.path.join(models_path, model_name, 'hparams.json')
+    
+    with open(filepath) as f:
+        dict2 = json.load(f)
+        for key, value in hparams.items():
+            hparams[key] = dict2[key]
 
     if length is None:
         length = hparams['n_ctx'] // 2
