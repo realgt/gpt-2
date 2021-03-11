@@ -4,23 +4,24 @@ import fire
 import json
 import os
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 import model, sample, encoder
 
 def sample_model(
-    model_name='117M',
+    model_name='124M',
     seed=None,
     nsamples=0,
     batch_size=1,
     length=None,
     temperature=1,
     top_k=0,
+    top_p=1,
     models_dir='models',
 ):
     """
     Run the sample_model
-    :model_name=117M : String, which model to use
+    :model_name=124M : String, which model to use
     :seed=None : Integer seed for random number generators, fix seed to
      reproduce results
     :nsamples=0 : Number of samples to return, if 0, continues to
@@ -58,7 +59,7 @@ def sample_model(
             hparams=hparams, length=length,
             start_token=enc.encoder['<|endoftext|>'],
             batch_size=batch_size,
-            temperature=temperature, top_k=top_k
+            temperature=temperature, top_k=top_k, top_p=top_p
         )[:, 1:]
 
         saver = tf.train.Saver()
@@ -76,4 +77,3 @@ def sample_model(
 
 if __name__ == '__main__':
     fire.Fire(sample_model)
-
